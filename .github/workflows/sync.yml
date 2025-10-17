@@ -1,0 +1,52 @@
+name: Sync
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    if: github.repository_owner == 'Sparkinit'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          submodules: recursive
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+      - name: Install dependencies
+        run: bun install
+      - name: Fetch table data
+        env:
+          LARK_APP_ID: ${{ secrets.LARK_APP_ID }}
+          LARK_APP_SECRET: ${{ secrets.LARK_APP_SECRET }}
+          LARK_APP_TOKEN: ${{ secrets.LARK_APP_TOKEN }}
+          LARK_TABLE_ID: ${{ secrets.LARK_TABLE_ID }}
+          LARK_VIEW_ID: ${{ secrets.LARK_VIEW_ID }}
+        run: bun run fetch
+      - name: Prepare for crawling
+        run: bun run data
+      - name: Crawl pages
+        run: bun run crawl
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          git submodule foreach --recursive '
+            git add .
+            if ! git diff --staged --quiet; then
+              git commit -m "chore: sync config" && git push
+            fi
+          '
+
+          git add .
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: sync content" && git push
+          fi

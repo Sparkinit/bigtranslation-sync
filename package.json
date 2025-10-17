@@ -1,0 +1,32 @@
+{
+	"name": "bigtranslation-monitor",
+	"module": "index.ts",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"fetch": "bun run scripts/fetch.ts",
+		"data": "bun run scripts/data.ts",
+		"crawl": "bun run scripts/crawl.ts",
+		"submodule:init": "git submodule update --init --recursive",
+		"submodule:update": "git submodule update --remote --merge",
+		"submodule:pull": "git pull origin main --recurse-submodules",
+		"submodule:push": "git push --recurse-submodules=on-demand"
+	},
+	"devDependencies": {
+		"@types/bun": "latest",
+		"@types/jsdom": "^27.0.0",
+		"@types/mozilla-readability": "^0.2.1"
+	},
+	"peerDependencies": {
+		"typescript": "^5.9.3"
+	},
+	"dependencies": {
+		"@larksuiteoapi/node-sdk": "^1.55.0",
+		"@mozilla/readability": "^0.6.0",
+		"@types/turndown": "^5.0.5",
+		"crawlee": "^3.15.1",
+		"jsdom": "^27.0.0",
+		"turndown": "^7.2.1",
+		"turndown-plugin-gfm": "^1.0.2"
+	}
+}

@@ -1,0 +1,12 @@
+[submodule "config"]
+	path = config
+	url = git@github.com:Sparkinit/bigtranslation-sync-config.git
+[submodule "utils"]
+	path = utils
+	url = git@github.com:Sparkinit/bigtranslation-sync-utils.git
+[submodule "scripts"]
+	path = scripts
+	url = git@github.com:Sparkinit/bigtranslation-sync-scripts.git
+[submodule "rules"]
+	path = rules
+	url = git@github.com:Sparkinit/bigtranslation-sync-rules.git
