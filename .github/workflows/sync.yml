@@ -32,6 +32,8 @@ jobs:
         run: bun run fetch
       - name: Prepare for crawling
         run: bun run data
+      - name: Install Playwright
+        run: bunx playwright install --with-deps
       - name: Crawl pages
         run: bun run crawl
       - name: Commit and push changes
