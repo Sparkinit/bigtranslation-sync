@@ -10,3 +10,6 @@
 [submodule "rules"]
 	path = rules
 	url = git@github.com:Sparkinit/bigtranslation-sync-rules.git
+[submodule "origin"]
+	path = origin
+	url = git@github.com:Sparkinit/bigtranslation-sync-origin.git
