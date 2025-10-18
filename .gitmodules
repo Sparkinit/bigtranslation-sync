@@ -1,15 +1,15 @@
 [submodule "config"]
 	path = config
-	url = git@github.com:Sparkinit/bigtranslation-sync-config.git
+	url = git@github.com:Sparkinit/initplan-translate-config.git
 [submodule "utils"]
 	path = utils
-	url = git@github.com:Sparkinit/bigtranslation-sync-utils.git
+	url = git@github.com:Sparkinit/initplan-translate-utils.git
 [submodule "scripts"]
 	path = scripts
-	url = git@github.com:Sparkinit/bigtranslation-sync-scripts.git
+	url = git@github.com:Sparkinit/initplan-translate-scripts.git
 [submodule "rules"]
 	path = rules
-	url = git@github.com:Sparkinit/bigtranslation-sync-rules.git
+	url = git@github.com:Sparkinit/initplan-translate-rules.git
 [submodule "origin"]
 	path = origin
-	url = git@github.com:Sparkinit/bigtranslation-sync-origin.git
+	url = git@github.com:Sparkinit/initplan-translate-origin.git
